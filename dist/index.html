@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">加密协议传输</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>JSON 输入区</h3>
+                        <form class="form-horizontal">
+
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <input rows="" cols="10" class="form-control" id="keyparams" value='
+{"PageUrl":"https://m.ireadercity.com/webapp/home/index.html#/","JudgeUrl":"dddddddgsdfgs","Timestamp":1489219612246}' />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="button" class="btn btn-default" id="discoverKey">生成密匙</button>
+                                </div>
+                            </div>
+
+                        </form>
+
+                    </div>
+                    <div class="col-md-6">
+                        <h3>密匙生成区</h3>
+                        <textarea rows="5" cols="10" class="form-control" id="showKey"></textarea>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="./index.js"></script>
+<script>
+    window.onload = function() {
+        document.getElementById('discoverKey').onclick = function() {
+            var re = /^s+|s+$/g;
+            var payload = (document.getElementById('keyparams').value).replace(re, '');;
+            document.getElementById('showKey').value = new Keyvalide(payload).token();
+        }
+    }
+</script>
+
+</html>
